@@ -9,8 +9,10 @@ async def test1_
 async def test1():
     async with aiohttp.ClientSession() as session:
         responses = []
+
+        
         async with asyncio.TaskGroup() as tg:
-            
+
 
 
 
