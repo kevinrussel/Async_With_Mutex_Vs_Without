@@ -26,7 +26,22 @@ def main():
     "https://linkedin.com",
     "https://microsoft.com",
     "https://apple.com",
-    "https://twitch.com"
+    "https://twitch.com",
+    "https://discord.com",
+    "https://facebook.com",
+    "https://tiktok.com",
+    "https://bing.com",
+    "https://linkedin.com",
+    "https://netflix.com",
+    "https://pintrest.com",
+    "https://fandom.com",
+    "https://canva.com",
+    "https://spotify.com",
+    "https://msn.com",
+    "https://imdb.com",
+    "https://paypal.com",
+    "https://ebay.com",
+    "https://openai.com"
 ] * 200
     with open("data.txt", "w") as file:
         for index in urls:
