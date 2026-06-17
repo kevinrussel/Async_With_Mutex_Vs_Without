@@ -3,10 +3,20 @@ import aiohttp
 import time
 
 async def test1_url(session,url):
-    async with session.get(url) as response:
-        status = response.status
-        return status
-
+    try:
+        async with session.get(url,
+                            timeout = aiohttp.ClientTimeout(total=5),
+                            ssl=False) as response:
+            status = response.status
+            return (url,status)
+    except aiohttp.ClientConnectorDNSError:
+        return url, "DNS FAILED"      
+    except aiohttp.ClientConnectorError:
+        return url, "CONNECTION FAILED"
+    except asyncio.TimeoutError:
+        return url, "TIMEOUT"
+    except Exception as e:
+        return url, f"FAILED: {type(e).__name__}" 
 
 
 async def test1():
