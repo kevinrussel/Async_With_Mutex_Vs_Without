@@ -5,7 +5,7 @@ import time
 async def test1_url(session,url):
     try:
         async with session.get(url,
-                            timeout = aiohttp.ClientTimeout(total=5),
+                            timeout = aiohttp.ClientTimeout(total=3),
                             ssl=False) as response:
             status = response.status
             return (url,status)
@@ -29,8 +29,12 @@ async def test1():
                 task = tg.create_task(test1_url(session,line))
                 responses.append(task)
 
+
     for value in responses:
         print(value.result())
+    with open("answer.txt", "w") as file:
+        for value in responses:
+            
 
 
 
