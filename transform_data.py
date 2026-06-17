@@ -6,12 +6,9 @@ def main():
     
     print(lines[0].split(","))
     with open("data.txt", "a") as file:
-
         for line in lines:
             postfix = line.split(",")[1]
-          
             url = "https://"+postfix
-            
             file.write(url)
             
 
