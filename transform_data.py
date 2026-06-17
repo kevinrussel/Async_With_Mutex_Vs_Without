@@ -22,10 +22,11 @@ def main():
     "https://amazon.com",
     "https://reddit.com",
     "https://youtube.com",
-    "https://twitter.com",
+    "https://x.com",
     "https://linkedin.com",
     "https://microsoft.com",
-    "https://apple.com"
+    "https://apple.com",
+    "https://twitch.com"
 ] * 50
     with open("data.txt", "w") as file:
         for index in urls:
