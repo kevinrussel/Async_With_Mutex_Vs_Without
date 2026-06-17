@@ -2,7 +2,7 @@ import asyncio
 import aiohttp
 import time
 
-async def test1(session,url):
+async def test1_url(session,url):
     async with session.get(url) as response:
         status = response.status
         return status
@@ -12,8 +12,15 @@ async def test1(session,url):
 async def test1():
     async with aiohttp.ClientSession() as session:
         responses = []
+        with open('data.txt', 'r') as file:
+            lines = file.readlines()
         async with asyncio.TaskGroup() as tg:
-            pass
+            for line in lines:
+                task = tg.create_task(test1_url(session,line))
+                responses.append(task)
+
+    for value in responses:
+        print(value.result())
 
 
 
