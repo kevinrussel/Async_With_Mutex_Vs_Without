@@ -11,6 +11,8 @@ async def test1_url(session,url, semaphore):
                                 ssl=False) as response:
                 status = response.status
                 return (url,status)
+        except OSError:
+            return url, "OS ERROR"
         except aiohttp.ClientConnectorDNSError:
             return url, "DNS FAILED"      
         except aiohttp.ClientConnectorError:
@@ -22,11 +24,11 @@ async def test1_url(session,url, semaphore):
 
 
 async def test1():
-    semaphore = asyncio.Semaphore(10)
+    semaphore = asyncio.Semaphore(25)
     resolver = aiohttp.AsyncResolver(nameservers=["8.8.8.8", "8.8.4.4"])
     connector = aiohttp.TCPConnector(
     resolver=resolver,
-    limit=10,
+    limit=25,
     ttl_dns_cache=300,  # cache DNS results for 5 minutes
     use_dns_cache=True  # don't re-lookup same domain
     )
@@ -35,17 +37,14 @@ async def test1():
         responses = []
         with open('data.txt', 'r') as file:
             lines = file.readlines()
-        async with asyncio.TaskGroup() as tg:
-            for line in lines:
-                task = tg.create_task(test1_url(session,line, semaphore))
-                responses.append(task)
+        tasks = [test1_url(session, line.strip(), semaphore) for line in lines]
+        responses = await asyncio.gather(*tasks, return_exceptions=True)
 
 
    
     with open("answer.txt", "w") as file:
         for value in responses:
-            values = value.result()
-            file.write(f"{values[0]}->{values[1]}\n")
+            file.write(f"{value[0]} -> {value[1]}\n")
 
 
 
