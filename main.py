@@ -1,8 +1,9 @@
 import asyncio
 import aiohttp
 import time
-semaphore = asyncio.Semaphore(50)
-async def test1_url(session,url):
+
+
+async def test1_url(session,url, semaphore):
     async with semaphore:
         try:
             async with session.get(url,
@@ -21,13 +22,22 @@ async def test1_url(session,url):
 
 
 async def test1():
-    async with aiohttp.ClientSession() as session:
+    semaphore = asyncio.Semaphore(10)
+    resolver = aiohttp.AsyncResolver(nameservers=["8.8.8.8", "8.8.4.4"])
+    connector = aiohttp.TCPConnector(
+    resolver=resolver,
+    limit=10,
+    ttl_dns_cache=300,  # cache DNS results for 5 minutes
+    use_dns_cache=True  # don't re-lookup same domain
+    )
+    
+    async with aiohttp.ClientSession(connector=connector) as session:
         responses = []
         with open('data.txt', 'r') as file:
             lines = file.readlines()
         async with asyncio.TaskGroup() as tg:
             for line in lines:
-                task = tg.create_task(test1_url(session,line))
+                task = tg.create_task(test1_url(session,line, semaphore))
                 responses.append(task)
 
 
