@@ -1,22 +1,23 @@
 import asyncio
 import aiohttp
 import time
-
+semaphore = asyncio.Semaphore(50)
 async def test1_url(session,url):
-    try:
-        async with session.get(url,
-                            timeout = aiohttp.ClientTimeout(total=3),
-                            ssl=False) as response:
-            status = response.status
-            return (url,status)
-    except aiohttp.ClientConnectorDNSError:
-        return url, "DNS FAILED"      
-    except aiohttp.ClientConnectorError:
-        return url, "CONNECTION FAILED"
-    except asyncio.TimeoutError:
-        return url, "TIMEOUT"
-    except Exception as e:
-        return url, f"FAILED: {type(e).__name__}" 
+    async with semaphore:
+        try:
+            async with session.get(url,
+                                timeout = aiohttp.ClientTimeout(total=3),
+                                ssl=False) as response:
+                status = response.status
+                return (url,status)
+        except aiohttp.ClientConnectorDNSError:
+            return url, "DNS FAILED"      
+        except aiohttp.ClientConnectorError:
+            return url, "CONNECTION FAILED"
+        except asyncio.TimeoutError:
+            return url, "TIMEOUT"
+        except Exception as e:
+            return url, f"FAILED: {type(e).__name__}" 
 
 
 async def test1():
@@ -30,11 +31,11 @@ async def test1():
                 responses.append(task)
 
 
-    for value in responses:
-        print(value.result())
+   
     with open("answer.txt", "w") as file:
         for value in responses:
-            
+            values = value.result()
+            file.write(f"{values[0]}->{values[1]}\n")
 
 
 
