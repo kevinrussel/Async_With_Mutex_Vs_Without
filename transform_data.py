@@ -27,7 +27,7 @@ def main():
     "https://microsoft.com",
     "https://apple.com",
     "https://twitch.com"
-] * 50
+] * 200
     with open("data.txt", "w") as file:
         for index in urls:
             file.write(f"{index}\n")
