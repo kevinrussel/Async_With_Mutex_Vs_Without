@@ -5,10 +5,14 @@ def main():
         lines = file.readlines()
     
     print(lines[0].split(","))
+    with open("data.txt", "a") as file:
 
-    for line in lines:
-        postfix = line.split(",")[1]
-        print(postfix)
-        time.sleep(5)
+        for line in lines:
+            postfix = line.split(",")[1]
+          
+            url = "https://"+postfix
+            
+            file.write(url)
+            
 
 main()
