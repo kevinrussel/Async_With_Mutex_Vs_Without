@@ -16,19 +16,19 @@ https://live.com -> 200
 https://vk.com -> 200
 https://instagram.com -> 200
 https://sohu.com -> 403
-https://sina.com.cn -> 200
+https://sina.com.cn -> OS ERROR
 https://jd.com -> 200
-https://weibo.com -> OS ERROR
+https://weibo.com -> 200
 https://360.cn -> 200
 https://google.de -> 200
-https://google.co.uk -> OS ERROR
+https://google.co.uk -> 200
 https://linkedin.com -> 200
 https://google.com.br -> 200
 https://list.tmall.com -> 200
 https://google.fr -> 200
 https://google.ru -> 200
 https://yandex.ru -> 200
-https://netflix.com -> 200
+https://netflix.com -> OS ERROR
 https://google.com.hk -> 200
 https://yahoo.co.jp -> 200
 https://google.it -> 200
@@ -57,7 +57,7 @@ https://hao123.com -> 200
 https://stackoverflow.com -> 200
 https://imdb.com -> 202
 https://github.com -> 200
-https://amazon.co.jp -> 503
+https://amazon.co.jp -> 200
 https://blogspot.com -> 200
 https://pinterest.com -> 200
 https://csdn.net -> 521
@@ -105,3 +105,46 @@ https://amazon.co.uk -> 503
 https://bbc.com -> 200
 https://fc2.com -> 200
 https://mozilla.org -> 200
+https://rakuten.co.jp -> OS ERROR
+https://uptodown.com -> 404
+https://cnn.com -> 200
+https://so.com -> OS ERROR
+https://soundcloud.com -> 200
+https://google.com.ua -> 200
+https://quora.com -> 403
+https://amazonaws.com -> 200
+https://ask.com -> 200
+https://clicksgear.com -> 200
+https://xnxx.com -> 200
+https://google.nl -> 200
+https://nytimes.com -> 200
+https://naver.com -> 200
+https://ettoday.net -> 200
+https://adf.ly -> 200
+https://dailymotion.com -> 200
+https://onlinesbi.com -> OS ERROR
+https://google.co.za -> 200
+https://steamcommunity.com -> 200
+https://google.co.ve -> 200
+https://salesforce.com -> 200
+https://espn.com -> 200
+https://fbcdn.net -> 200
+https://stackexchange.com -> 200
+https://blogger.com -> 200
+https://chase.com -> 200
+https://google.co.kr -> 200
+https://ebay.de -> 200
+https://vimeo.com -> 200
+https://vice.com -> 200
+https://theguardian.com -> 200
+https://blastingnews.com -> 200
+https://tribunnews.com -> 200
+https://steampowered.com -> 200
+https://chaturbate.com -> 200
+https://ebay.co.uk -> 200
+https://detik.com -> OS ERROR
+https://google.gr -> 200
+https://google.com.vn -> 200
+https://buzzfeed.com -> 200
+https://indeed.com -> 403
+https://dailymail.co.uk -> 403
