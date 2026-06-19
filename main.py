@@ -3,6 +3,8 @@ import aiohttp
 import time
 
 
+mutex = asyncio.Lock()
+
 
 async def test1_url(session,url, semaphore):
     async with semaphore:
@@ -59,6 +61,13 @@ print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
 
 
+
+async def test2_with_mutex(session,url,sephamore):
+    async with sephamore:
+        async with session.get(url) as response:
+            
+        
+        
 
 async def test2():
     semaphore_2 = asyncio.Semaphore(25)
