@@ -65,6 +65,22 @@ print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 async def test2_with_mutex(session,url,sephamore):
     async with sephamore:
         async with session.get(url) as response:
+            try:
+                async with session.get(url,
+                                    timeout = aiohttp.ClientTimeout(total=3),
+                                    ssl=False) as response:
+                    status = response.status
+                    return (url,status)
+            except OSError:
+                return url, "OS ERROR"
+            except aiohttp.ClientConnectorDNSError:
+                return url, "DNS FAILED"      
+            except aiohttp.ClientConnectorError:
+                return url, "CONNECTION FAILED"
+            except asyncio.TimeoutError:
+                return url, "TIMEOUT"
+            except Exception as e:
+                return url, f"FAILED: {type(e).__name__}" 
 
         
         
