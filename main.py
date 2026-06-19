@@ -61,7 +61,18 @@ print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
 
 async def test2():
+    semaphore_2 = asyncio.Semaphore(25)
+    resolver = aiohttp.AsyncResolver(nameservers=["8.8.8.8", "8.8.4.4"])
+    connector = aiohttp.TCPConnector(
+    resolver=resolver,
+    limit=25,
+    ttl_dns_cache=300,  # cache DNS results for 5 minutes
+    use_dns_cache=True  # don't re-lookup same domain
+    )
+    
+    async with aiohttp.ClientSession(connector=connector) as session:
+        with open('data.txt','r') as file2:
+            lines2 = file2.readlines()
+        
 
-
-
-time_2_time_start = time.perf_counter()
+# time_2_time_start = time.perf_counter()
