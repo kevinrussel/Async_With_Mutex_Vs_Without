@@ -51,6 +51,15 @@ async def test1():
 
 
 
+def test_2():
+
+
+
+    with open("data.txt",'r') as file:
+        lines = file.readlines()
+        
+
+
 
 
 
@@ -59,5 +68,6 @@ asyncio.run(test1())
 test_1_time_end = time.perf_counter()
 print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
+time_2_time_start = time.perf_counter()
 
 
