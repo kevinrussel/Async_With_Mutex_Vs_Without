@@ -74,7 +74,7 @@ def test_2():
     
     with open("sequential_requests.txt", "w") as file2:
         for value in result:
-            file.write(f"{value[0]} -> {value[1]}\n")
+            file2.write(f"{value[0]} -> {value[1]}\n")
 
 
 
@@ -83,12 +83,7 @@ def test_2():
 
 
 
-# time_2_time_start = time.perf_counter()
-
-
-
-
-
-
-
+time_2_time_start = time.perf_counter()
 test_2()
+time_2_end_time = time.perf_counter()
+print(f"Total time for test 2 is {time_2_end_time - time_2_time_start}")
