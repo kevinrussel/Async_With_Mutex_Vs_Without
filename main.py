@@ -41,7 +41,9 @@ async def test1():
         with open('data.txt', 'r') as file:
             lines = file.readlines()
         tasks = []
+        counter = 0
         for line in lines:
+            if(counter >=)
             tasks.append(test1_url((session,line.strip(),semaphore)))
         responses = await asyncio.gather(*tasks, return_exceptions=True)
 
