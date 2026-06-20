@@ -54,10 +54,10 @@ async def test1():
 
 
 
-# test_1_time_start = time.perf_counter()
-# asyncio.run(test1())
-# test_1_time_end = time.perf_counter()
-# print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
+test_1_time_start = time.perf_counter()
+asyncio.run(test1())
+test_1_time_end = time.perf_counter()
+print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
 
 def get_header(url):
@@ -68,8 +68,15 @@ def get_header(url):
 def test_2():
     with open("data.txt",'r') as file:
         lines = file.readlines()
+    result = []
     for line in lines:
-        print(get_header(line.strip()))
+        result.append((line,get_header(line.strip())))
+    
+    with open("sequential_requests.txt", "w") as file2:
+        for value in result:
+            file.write(f"{value[0]} -> {value[1]}\n")
+
+
 
 
 
