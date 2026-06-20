@@ -1,7 +1,7 @@
 import asyncio
 import aiohttp
 import time
-
+import requests
 
 mutex = asyncio.Lock()
 
@@ -61,46 +61,3 @@ print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
 
 
-
-async def test2_with_mutex(session,url,sephamore):
-    async with sephamore:
-        async with session.get(url) as response:
-            try:
-                async with session.get(url,
-                                    timeout = aiohttp.ClientTimeout(total=3),
-                                    ssl=False) as response:
-                    status = response.status
-                    return (url,status)
-            except OSError:
-                return url, "OS ERROR"
-            except aiohttp.ClientConnectorDNSError:
-                return url, "DNS FAILED"      
-            except aiohttp.ClientConnectorError:
-                return url, "CONNECTION FAILED"
-            except asyncio.TimeoutError:
-                return url, "TIMEOUT"
-            except Exception as e:
-                return url, f"FAILED: {type(e).__name__}" 
-
-        
-        
-
-async def test2():
-    semaphore_2 = asyncio.Semaphore(25)
-    resolver = aiohttp.AsyncResolver(nameservers=["8.8.8.8", "8.8.4.4"])
-    connector = aiohttp.TCPConnector(
-    resolver=resolver,
-    limit=25,
-    ttl_dns_cache=300,  # cache DNS results for 5 minutes
-    use_dns_cache=True  # don't re-lookup same domain
-    )
-    
-    async with aiohttp.ClientSession(connector=connector) as session:
-        with open('data.txt','r') as file2:
-            lines2 = file2.readlines()
-
-        tasks2 = [test2_with_mutex(session, line.strip(), semaphore_2) for line in lines2]
-        responses = await asyncio.gather(*tasks2, return_exceptions=True)
-        
-
-# time_2_time_start = time.perf_counter()
