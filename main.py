@@ -26,7 +26,7 @@ async def test1_url(session,url, semaphore):
             return url, f"FAILED: {type(e).__name__}" 
 
 
-async def test1():
+async def test1(num_of_urls_processed,file_name):
     semaphore = asyncio.Semaphore(25)
     resolver = aiohttp.AsyncResolver(nameservers=["8.8.8.8", "8.8.4.4"])
     connector = aiohttp.TCPConnector(
@@ -43,13 +43,12 @@ async def test1():
         tasks = []
         counter = 0
         for line in lines:
-            if(counter >=)
-            tasks.append(test1_url((session,line.strip(),semaphore)))
+            if(counter >=num_of_urls_processed):
+                break
+            tasks.append(test1_url(session,line.strip(),semaphore))
+            counter +=1
         responses = await asyncio.gather(*tasks, return_exceptions=True)
-
-
-   
-    with open("answer.txt", "w") as file:
+    with open(file_name, "w") as file:
         for value in responses:
             file.write(f"{value[0]} -> {value[1]}\n")
 
@@ -59,7 +58,7 @@ async def test1():
 
 
 test_1_time_start = time.perf_counter()
-asyncio.run(test1())
+asyncio.run(test1(10,"answer.txt"))
 test_1_time_end = time.perf_counter()
 print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
@@ -87,7 +86,7 @@ def test_2():
 
 
 
-time_2_time_start = time.perf_counter()
-test_2()
-time_2_end_time = time.perf_counter()
-print(f"Total time for test 2 is {time_2_end_time - time_2_time_start}")
+# time_2_time_start = time.perf_counter()
+# test_2()
+# time_2_end_time = time.perf_counter()
+# print(f"Total time for test 2 is {time_2_end_time - time_2_time_start}")
