@@ -51,23 +51,29 @@ async def test1():
 
 
 
+
+# def get_header()
+
 def test_2():
 
 
 
     with open("data.txt",'r') as file:
         lines = file.readlines()
-        
+    r = requests.get(lines[0])
+    print(r.status_code())
 
 
 
 
 
-test_1_time_start = time.perf_counter()
-asyncio.run(test1())
-test_1_time_end = time.perf_counter()
-print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
-time_2_time_start = time.perf_counter()
+# test_1_time_start = time.perf_counter()
+# asyncio.run(test1())
+# test_1_time_end = time.perf_counter()
+# print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
+
+# time_2_time_start = time.perf_counter()
 
 
+test_2()
