@@ -58,9 +58,14 @@ async def test1(num_of_urls_processed,file_name):
 
 
 test_1_time_start = time.perf_counter()
-asyncio.run(test1(10,"answer.txt"))
+asyncio.run(test1(10,"test_1_async.txt"))
 test_1_time_end = time.perf_counter()
 print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
+
+
+
+
+
 
 
 def get_header(url):
