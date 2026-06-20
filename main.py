@@ -52,20 +52,6 @@ async def test1():
 
 
 
-# def get_header()
-
-def test_2():
-
-
-
-    with open("data.txt",'r') as file:
-        lines = file.readlines()
-    r = requests.get(lines[0].strip())
-    print(r.status_code)
-
-
-
-
 
 
 # test_1_time_start = time.perf_counter()
@@ -73,7 +59,29 @@ def test_2():
 # test_1_time_end = time.perf_counter()
 # print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
+
+def get_header(url):
+    r = requests.get(url)
+    return r.status_code
+
+
+def test_2():
+    with open("data.txt",'r') as file:
+        lines = file.readlines()
+    for line in lines:
+        print(get_header(line.strip()))
+
+
+
+
+
+
 # time_2_time_start = time.perf_counter()
+
+
+
+
+
 
 
 test_2()
