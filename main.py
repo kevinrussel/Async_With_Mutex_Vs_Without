@@ -60,8 +60,8 @@ def test_2():
 
     with open("data.txt",'r') as file:
         lines = file.readlines()
-    r = requests.get(lines[0])
-    print(r.status_code())
+    r = requests.get(lines[0].strip())
+    print(r.status_code)
 
 
 
