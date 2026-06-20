@@ -74,7 +74,7 @@ def test_2():
     
     with open("sequential_requests.txt", "w") as file2:
         for value in result:
-            file2.write(f"{value[0]} -> {value[1]}\n")
+            file2.write(f"{value[0].strip()} -> {value[1]}\n")
 
 
 
