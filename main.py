@@ -74,7 +74,7 @@ print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
 
 
-def get_header(url):
+def test_2_get_header(url):
     r = requests.get(url)
     return r.status_code
 
@@ -84,7 +84,7 @@ def test_2():
         lines = file.readlines()
     result = []
     for line in lines:
-        result.append((line,get_header(line.strip())))
+        result.append((line,test_2_get_header(line.strip())))
     
     with open("sequential_requests.txt", "w") as file2:
         for value in result:
@@ -97,7 +97,7 @@ def test_2():
 
 
 
-# time_2_time_start = time.perf_counter()
-# test_2()
-# time_2_end_time = time.perf_counter()
-# print(f"Total time for test 2 is {time_2_end_time - time_2_time_start}")
+time_2_time_start = time.perf_counter()
+test_2()
+time_2_end_time = time.perf_counter()
+print(f"Total time for test 2 is {time_2_end_time - time_2_time_start}")

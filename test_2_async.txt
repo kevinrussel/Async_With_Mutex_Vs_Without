@@ -5,21 +5,21 @@ https://amazon.com -> 503
 https://reddit.com -> 200
 https://youtube.com -> 200
 https://x.com -> FAILED: ClientResponseError
-https://linkedin.com -> OS ERROR
+https://linkedin.com -> 200
 https://microsoft.com -> 200
 https://apple.com -> 200
-https://twitch.com -> OS ERROR
+https://twitch.com -> 200
 https://discord.com -> 200
 https://facebook.com -> 200
 https://tiktok.com -> 200
 https://bing.com -> 200
-https://linkedin.com -> OS ERROR
+https://linkedin.com -> 200
 https://netflix.com -> 200
 https://pintrest.com -> 200
 https://fandom.com -> 403
 https://canva.com -> 403
 https://spotify.com -> 200
-https://msn.com -> OS ERROR
+https://msn.com -> 200
 https://imdb.com -> 202
 https://paypal.com -> 200
 https://ebay.com -> 200
@@ -31,7 +31,7 @@ https://amazon.com -> 503
 https://reddit.com -> 200
 https://youtube.com -> 200
 https://x.com -> FAILED: ClientResponseError
-https://linkedin.com -> OS ERROR
+https://linkedin.com -> 200
 https://microsoft.com -> 200
 https://apple.com -> 200
 https://twitch.com -> 200
