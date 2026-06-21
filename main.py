@@ -61,13 +61,17 @@ def test_2_get_header(url):
 
 
 def test_2(num_of_files, file_name, data_file):
-    with open("data.txt",'r') as file:
+    with open(data_file,'r') as file:
         lines = file.readlines()
     result = []
+    counter = 0
     for line in lines:
+        if(counter >= num_of_files):
+            break
         result.append((line,test_2_get_header(line.strip())))
+        counter +=1
     
-    with open("sequential_requests.txt", "w") as file2:
+    with open(file_name, "w") as file2:
         for value in result:
             file2.write(f"{value[0].strip()} -> {value[1]}\n")
 
