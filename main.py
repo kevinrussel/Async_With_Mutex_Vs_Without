@@ -71,13 +71,17 @@ def test_2():
             file2.write(f"{value[0].strip()} -> {value[1]}\n")
 
 
+def get_time():
+    return time.perf_counter()
 
 
 
+def start_test_1():
+    
+    test_1_time_start = get_time()
+    asyncio.run(test1(10,"test_1_async.txt"))
+    test_1_time_end = get_time()
 
-test_1_time_start = time.perf_counter()
-asyncio.run(test1(10,"test_1_async.txt"))
-test_1_time_end = time.perf_counter()
 print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
 test_1_time_start = time.perf_counter()
