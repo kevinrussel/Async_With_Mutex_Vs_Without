@@ -56,8 +56,11 @@ async def test1(num_of_urls_processed,file_name, data_file):
 
 
 def test_2_get_header(url):
-    r = requests.get(url)
-    return r.status_code
+    try:
+        r = requests.get(url, timeout=10)
+        return r.status_code
+    except requests.RequestException as e:
+        return f"ERROR: {e}"
 
 
 def test_2(num_of_files, file_name, data_file):
@@ -91,7 +94,6 @@ def start_test_1(num_of_files,file_name,data_file):
 
 
 def start_test_2(num_of_files, file_name, data_file):
-    print("hitting")
     test_2_time_start = get_time()
     test_2(num_of_files,file_name,data_file)
     test_2_time_end = get_time()
