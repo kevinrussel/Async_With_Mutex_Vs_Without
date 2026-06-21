@@ -27,7 +27,7 @@ async def test1_url(session,url, semaphore):
             return url, f"FAILED: {type(e).__name__}" 
 
 
-async def test1(num_of_urls_processed,file_name):
+async def test1(num_of_urls_processed,file_name, data_file):
     semaphore = asyncio.Semaphore(25)
     resolver = aiohttp.AsyncResolver(nameservers=["8.8.8.8", "8.8.4.4"])
     connector = aiohttp.TCPConnector(
@@ -77,22 +77,27 @@ def get_time():
 
 
 
-def start_test_1(num_of_files,file_name):
+def start_test_1(num_of_files,file_name,data_file):
     
     test_1_time_start = get_time()
-    asyncio.run(test1(num_of_files,file_name))
+    asyncio.run(test1(num_of_files,file_name,data_file))
     test_1_time_end = get_time()
     total_time = test_1_time_end - test_1_time_start
-
+    return total_time
 def create_csv_file(filepath):
     with open(filepath,'w',newline='') as csvfile:
         fieldnames = ['Total Packets','Total Time']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
 
+
+def edit_csv_file(filepath):
+    pass
 def main():
     create_csv_file("async/results/async_results.csv")
     create_csv_file("sequential/results/sequential_results.csv")
+
+
 
 main()
 
