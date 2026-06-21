@@ -92,6 +92,10 @@ def create_csv_file(filepath):
 
 
 def edit_csv_file(csv_filepath, total_num_of_packets, total_time):
+    data = {'Total Packets': total_num_of_packets, 'Total Time': total_time}
+    with open(csv_filepath, 'a' , newline= '') as csvfile:
+        csvfile.writerows(data)
+
     pass
 
 
@@ -103,6 +107,7 @@ def main():
     for values in num_of_packets:
         test_1_total_time = start_test_1(values,f"async/runs/async_{values}_packets",data_file)
         print(f" total num of packets: 10 total time {test_1_total_time}")
+        with open()
 
           
 
