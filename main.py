@@ -54,6 +54,24 @@ async def test1(num_of_urls_processed,file_name):
 
 
 
+def test_2_get_header(url):
+    r = requests.get(url)
+    return r.status_code
+
+
+def test_2():
+    with open("data.txt",'r') as file:
+        lines = file.readlines()
+    result = []
+    for line in lines:
+        result.append((line,test_2_get_header(line.strip())))
+    
+    with open("sequential_requests.txt", "w") as file2:
+        for value in result:
+            file2.write(f"{value[0].strip()} -> {value[1]}\n")
+
+
+
 
 
 
@@ -71,24 +89,6 @@ print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
 
 
-
-
-
-def test_2_get_header(url):
-    r = requests.get(url)
-    return r.status_code
-
-
-def test_2():
-    with open("data.txt",'r') as file:
-        lines = file.readlines()
-    result = []
-    for line in lines:
-        result.append((line,test_2_get_header(line.strip())))
-    
-    with open("sequential_requests.txt", "w") as file2:
-        for value in result:
-            file2.write(f"{value[0].strip()} -> {value[1]}\n")
 
 
 
