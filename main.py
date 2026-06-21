@@ -100,7 +100,8 @@ def main():
     create_csv_file("sequential/results/sequential_results.csv")
     data_file = "url/data.txt"
     test_1_total_time = start_test_1(10,"async/runs/async_10_packets",data_file)
-    print(test_1_total_time)
+    print(f" total num of packets: 10 total time{test_1_total_time}")
+          
 
 main()
 
