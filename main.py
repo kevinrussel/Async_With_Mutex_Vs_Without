@@ -102,7 +102,7 @@ def main():
     num_of_packets = [10,100,200,400]
     for values in num_of_packets:
         test_1_total_time = start_test_1(values,f"async/runs/async_{values}_packets",data_file)
-        print(f" total num of packets: 10 total time{test_1_total_time}")
+        print(f" total num of packets: 10 total time {test_1_total_time}")
 
           
 

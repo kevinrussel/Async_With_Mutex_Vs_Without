@@ -22,7 +22,6 @@ def main():
     "https://amazon.com",
     "https://reddit.com",
     "https://youtube.com",
-    "https://x.com",
     "https://linkedin.com",
     "https://microsoft.com",
     "https://apple.com",
