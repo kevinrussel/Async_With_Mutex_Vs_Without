@@ -114,9 +114,9 @@ def edit_csv_file(csv_filepath, total_num_of_packets, total_time):
 def run_test(num_of_packets,data_file, csv_result_file_path, runs_result_path):
         for values in num_of_packets:
             path = runs_result_path + f"_{values}_packets"
-            test_1_total_time = start_test_1(values,path,data_file)
-            print(f" total num of packets: {values} total time {test_1_total_time}")
-            edit_csv_file(csv_result_file_path,values,test_1_total_time)
+            test_total_time = start_test_1(values,path,data_file)
+            print(f" total num of packets: {values} total time {test_total_time}")
+            edit_csv_file(csv_result_file_path,values,test_total_time)
 
 def main():
     async_file_path = "async/results/async_results.csv"
