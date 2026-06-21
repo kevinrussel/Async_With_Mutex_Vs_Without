@@ -2,6 +2,7 @@ import asyncio
 import aiohttp
 import time
 import requests
+import csv
 
 mutex = asyncio.Lock()
 
@@ -81,7 +82,6 @@ def start_test_1():
     test_1_time_start = get_time()
     asyncio.run(test1(10,"test_1_async.txt"))
     test_1_time_end = get_time()
-
     print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
 test_1_time_start = time.perf_counter()
