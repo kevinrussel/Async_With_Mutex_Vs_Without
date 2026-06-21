@@ -44,7 +44,7 @@ def main():
     "https://openai.com",
     "https://weather.com"
 ] * 200
-    with open("data.txt", "w") as file:
+    with open("url/data.txt", "w") as file:
         for index in urls:
             file.write(f"{index}\n")
 
