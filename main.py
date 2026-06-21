@@ -84,13 +84,15 @@ def start_test_1(num_of_files,file_name):
     test_1_time_end = get_time()
     total_time = test_1_time_end - test_1_time_start
 
-
-
-def main():
-    with open('async_test.csv','w',newline='') as csvfile:
+def create_csv_file(filepath):
+    with open(filepath,'w',newline='') as csvfile:
         fieldnames = ['Total Packets','Total Time']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
+
+def main():
+    create_csv_file("async/results/async_results.csv")
+    create_csv_file("sequential/results/sequential_results.csv")
 
 main()
 
