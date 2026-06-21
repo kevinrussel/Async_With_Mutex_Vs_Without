@@ -111,15 +111,18 @@ def edit_csv_file(csv_filepath, total_num_of_packets, total_time):
         writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
         writer.writerow(data)
 
-def run_test(num_of_packets,data_file, csv_result_file_path):
+def run_test(num_of_packets,data_file, csv_result_file_path, runs_result_path):
         for values in num_of_packets:
-            test_1_total_time = start_test_1(values,f"async/runs/async_{values}_packets",data_file)
+            path = runs_result_path + f"_{values}_packets"
+            test_1_total_time = start_test_1(values,path,data_file)
             print(f" total num of packets: {values} total time {test_1_total_time}")
             edit_csv_file(csv_result_file_path,values,test_1_total_time)
 
 def main():
     async_file_path = "async/results/async_results.csv"
     sequential_file_path  = "sequential/results/sequential_results.csv"
+    async_runs_result_path = "async/runs/async"
+    sequential_runs_result_path = "sequential/runs/sequential"
     create_csv_file(async_file_path)
     create_csv_file(sequential_file_path)
     data_file = "url/data.txt"
