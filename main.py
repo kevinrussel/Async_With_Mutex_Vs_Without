@@ -77,13 +77,13 @@ def get_time():
 
 
 
-def start_test_1():
+def start_test_1(num_of_files,file_name):
     
     test_1_time_start = get_time()
-    asyncio.run(test1(10,"test_1_async.txt"))
+    asyncio.run(test1(num_of_files,file_name))
     test_1_time_end = get_time()
-    print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
-# 
+    total_time = test_1_time_end - test_1_time_start
+     
 test_1_time_start = time.perf_counter()
 asyncio.run(test1(100,"test_2_async.txt"))
 test_1_time_end = time.perf_counter()
