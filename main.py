@@ -84,6 +84,8 @@ def start_test_1(num_of_files,file_name,data_file):
     test_1_time_end = get_time()
     total_time = test_1_time_end - test_1_time_start
     return total_time
+
+
 def create_csv_file(filepath):
     with open(filepath,'w',newline='') as csvfile:
         fieldnames = ['Total_Packets','Total_Time']
@@ -92,10 +94,11 @@ def create_csv_file(filepath):
 
 
 def edit_csv_file(csv_filepath, total_num_of_packets, total_time):
+    fieldnames = ['Total_Packets', 'Total_Time']
     data = {'Total_Packets': total_num_of_packets, 'Total_Time': total_time}
     with open(csv_filepath, 'a' , newline= '') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerows(data)
+        writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
+        writer.writerow(data)
 
 
 
@@ -108,7 +111,7 @@ def main():
     num_of_packets = [10,100,200,400]
     for values in num_of_packets:
         test_1_total_time = start_test_1(values,f"async/runs/async_{values}_packets",data_file)
-        print(f" total num of packets: 10 total time {test_1_total_time}")
+        print(f" total num of packets: {values} total time {test_1_total_time}")
         edit_csv_file(async_file_path,values,test_1_total_time)
           
 main()
