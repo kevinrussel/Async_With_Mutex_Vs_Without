@@ -91,7 +91,7 @@ def create_csv_file(filepath):
         writer.writeheader()
 
 
-def edit_csv_file(filepath):
+def edit_csv_file(csv_filepath, total_num_of_packets, total_time):
     pass
 
 
