@@ -39,7 +39,7 @@ async def test1(num_of_urls_processed,file_name, data_file):
     
     async with aiohttp.ClientSession(connector=connector) as session:
         responses = []
-        with open('data.txt', 'r') as file:
+        with open(data_file, 'r') as file:
             lines = file.readlines()
         tasks = []
         counter = 0
@@ -93,11 +93,14 @@ def create_csv_file(filepath):
 
 def edit_csv_file(filepath):
     pass
+
+
 def main():
     create_csv_file("async/results/async_results.csv")
     create_csv_file("sequential/results/sequential_results.csv")
-
-
+    data_file = "url/data.txt"
+    test_1_total_time = start_test_1(10,"async/runs/async_10_packets",data_file)
+    print(test_1_total_time)
 
 main()
 
