@@ -104,24 +104,3 @@ def main():
 
 main()
 
-# test_1_time_start = time.perf_counter()
-# asyncio.run(test1(100,"test_2_async.txt"))
-# test_1_time_end = time.perf_counter()
-# print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
-
-
-
-
-
-
-
-
-
-
-
-
-
-# time_2_time_start = time.perf_counter()
-# test_2()
-# time_2_end_time = time.perf_counter()
-# print(f"Total time for test 2 is {time_2_end_time - time_2_time_start}")
