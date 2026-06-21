@@ -91,6 +91,7 @@ def start_test_1(num_of_files,file_name,data_file):
 
 
 def start_test_2(num_of_files, file_name, data_file):
+    print("hitting")
     test_2_time_start = get_time()
     test_2(num_of_files,file_name,data_file)
     test_2_time_end = get_time()
@@ -112,9 +113,15 @@ def edit_csv_file(csv_filepath, total_num_of_packets, total_time):
         writer.writerow(data)
 
 def run_test(num_of_packets,data_file, csv_result_file_path, runs_result_path):
+        sequential = False
+        if "sequential" in csv_result_file_path:
+            sequential = True
         for values in num_of_packets:
             path = runs_result_path + f"_{values}_packets"
-            test_total_time = start_test_1(values,path,data_file)
+            if(sequential):
+                test_total_time = start_test_2(values,path,data_file)
+            else:
+                test_total_time = start_test_1(values,path,data_file)
             print(f" total num of packets: {values} total time {test_total_time}")
             edit_csv_file(csv_result_file_path,values,test_total_time)
 
