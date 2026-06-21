@@ -83,11 +83,21 @@ def start_test_1(num_of_files,file_name):
     asyncio.run(test1(num_of_files,file_name))
     test_1_time_end = get_time()
     total_time = test_1_time_end - test_1_time_start
-     
-test_1_time_start = time.perf_counter()
-asyncio.run(test1(100,"test_2_async.txt"))
-test_1_time_end = time.perf_counter()
-print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
+
+
+
+def main():
+    with open('async_test.csv','w',newline='') as csvfile:
+        fieldnames = ['Total Packets','Total Time']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+
+main()
+
+# test_1_time_start = time.perf_counter()
+# asyncio.run(test1(100,"test_2_async.txt"))
+# test_1_time_end = time.perf_counter()
+# print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
 
 
@@ -101,7 +111,7 @@ print(f"Total time for test 1 is {test_1_time_end - test_1_time_start}")
 
 
 
-time_2_time_start = time.perf_counter()
-test_2()
-time_2_end_time = time.perf_counter()
-print(f"Total time for test 2 is {time_2_end_time - time_2_time_start}")
+# time_2_time_start = time.perf_counter()
+# test_2()
+# time_2_end_time = time.perf_counter()
+# print(f"Total time for test 2 is {time_2_end_time - time_2_time_start}")
