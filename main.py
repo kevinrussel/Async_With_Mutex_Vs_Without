@@ -60,7 +60,7 @@ def test_2_get_header(url):
     return r.status_code
 
 
-def test_2():
+def test_2(num_of_files, file_name, data_file):
     with open("data.txt",'r') as file:
         lines = file.readlines()
     result = []
@@ -85,6 +85,13 @@ def start_test_1(num_of_files,file_name,data_file):
     total_time = test_1_time_end - test_1_time_start
     return total_time
 
+
+def start_test_2(num_of_files, file_name, data_file):
+    test_2_time_start = get_time()
+    test_2(num_of_files,file_name,data_file)
+    test_2_time_end = get_time()
+    total_time = test_2_time_end - test_2_time_start
+    return total_time
 
 def create_csv_file(filepath):
     with open(filepath,'w',newline='') as csvfile:
