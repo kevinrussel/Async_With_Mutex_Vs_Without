@@ -41,7 +41,8 @@ def main():
     "https://imdb.com",
     "https://paypal.com",
     "https://ebay.com",
-    "https://openai.com"
+    "https://openai.com",
+    "https://weather.com"
 ] * 200
     with open("data.txt", "w") as file:
         for index in urls:
