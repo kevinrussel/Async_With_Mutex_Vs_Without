@@ -127,13 +127,8 @@ def main():
     create_csv_file(sequential_file_path)
     data_file = "url/data.txt"
     num_of_packets = [10,100,200,400]
-    for values in num_of_packets:
-        test_1_total_time = start_test_1(values,f"async/runs/async_{values}_packets",data_file)
-        print(f" total num of packets: {values} total time {test_1_total_time}")
-        edit_csv_file(async_file_path,values,test_1_total_time)
-
-
-    num_of_packets = [10,100,200,400]
+    run_test(num_of_packets,data_file,async_file_path,async_runs_result_path)
+   
           
 main()
 
