@@ -126,9 +126,9 @@ def main():
     create_csv_file(async_file_path)
     create_csv_file(sequential_file_path)
     data_file = "url/data.txt"
-    num_of_packets = [10,100,200,400]
-    run_test(num_of_packets,data_file,async_file_path,async_runs_result_path)
-   
+    num_of_packets = [2,5,7,10]
+    # run_test(num_of_packets,data_file,async_file_path,async_runs_result_path)
+    run_test(num_of_packets,data_file,sequential_file_path,sequential_runs_result_path)
           
 main()
 
