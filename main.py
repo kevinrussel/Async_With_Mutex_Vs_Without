@@ -6,7 +6,8 @@ import csv
 import threading
 import queue
 
-
+threading_results = []
+url_queue = queue.Queue()
 
 async def test1_url(session,url, semaphore):
     async with semaphore:
@@ -72,6 +73,7 @@ def test_2(num_of_files, file_name, data_file):
     for line in lines:
         if(counter >= num_of_files):
             break
+        url_queue.append()
         result.append((line,test_2_get_header(line.strip())))
         counter +=1
     
@@ -79,6 +81,7 @@ def test_2(num_of_files, file_name, data_file):
         for value in result:
             file2.write(f"{value[0].strip()} -> {value[1]}\n")
 
+    url_queue.queue.clear()
 
 def test_3_worker():
     while True:
