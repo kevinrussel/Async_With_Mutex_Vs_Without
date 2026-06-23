@@ -130,6 +130,10 @@ def run_test(num_of_packets,data_file, csv_result_file_path, runs_result_path):
 def main():
     async_file_path = "async/results/async_results.csv"
     sequential_file_path  = "sequential/results/sequential_results.csv"
+    threading_file_path = "threading/results/threading_results.csv"
+    
+
+
     async_runs_result_path = "async/runs/async"
     sequential_runs_result_path = "sequential/runs/sequential"
     create_csv_file(async_file_path)
