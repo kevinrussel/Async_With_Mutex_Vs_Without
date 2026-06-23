@@ -100,11 +100,14 @@ def test_3_worker():
 
 
 def test_3(num_of_files,file_name,data_file):
+    global threading_results, url_queue
+    url_queue = queue.Queue() 
+    threading_results = []
     threads = []
     max_workers = 8
     for _ in range(max_workers):
         threads.append(threading.Thread(target=test_3_worker))
-    for value in range(threads):
+    for value in threads:
         value.start()
 
     with open(data_file,'r') as file:
@@ -122,12 +125,10 @@ def test_3(num_of_files,file_name,data_file):
     
     for t in threads:
         t.join()
-
     with open(file_name, "w") as file2:
         for value in threading_results:
             file2.write(f"{value[0].strip()} -> {value[1]}\n")
-    threading_results = []
-    queue.url_queue.clear()
+ 
 
 
 
@@ -209,8 +210,8 @@ def main():
     create_csv_file(threading_file_path)
     data_file = "url/data.txt"
     num_of_packets = [10,20]
-    # run_test(num_of_packets,data_file,async_file_path,async_runs_result_path)
-    # run_test(num_of_packets,data_file,sequential_file_path,sequential_runs_result_path)
+    run_test(num_of_packets,data_file,async_file_path,async_runs_result_path)
+    run_test(num_of_packets,data_file,sequential_file_path,sequential_runs_result_path)
     run_test(num_of_packets,data_file,threading_file_path,threading_runs_results_path)     
 main()
 
