@@ -82,6 +82,9 @@ def test_2(num_of_files, file_name, data_file):
 
 
 def test_3_worker():
+    while True:
+
+    
     pass
 
 
@@ -92,6 +95,17 @@ def test_3(num_of_files,file_name,data_file):
         threads.append(threading.Thread(target=test_3_worker))
     for value in range(threads):
         value.start()
+
+    with open(data_file,'r') as file:
+        lines = file.readlines()
+    result = []
+    counter = 0
+    for line in lines:
+        if(counter >= num_of_files):
+            break
+        result.append((line,test_2_get_header(line.strip())))
+        counter +=1
+    
 
 
     pass
