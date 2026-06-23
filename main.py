@@ -131,13 +131,16 @@ def main():
     async_file_path = "async/results/async_results.csv"
     sequential_file_path  = "sequential/results/sequential_results.csv"
     threading_file_path = "threading/results/threading_results.csv"
-    
+
 
 
     async_runs_result_path = "async/runs/async"
     sequential_runs_result_path = "sequential/runs/sequential"
+    threading_runs_results_path = "threading/runs/threading"
+
     create_csv_file(async_file_path)
     create_csv_file(sequential_file_path)
+    create_csv_file(threading_file_path)
     data_file = "url/data.txt"
     num_of_packets = [10,50,100,250,500,1000,2500,3500,5000]
     run_test(num_of_packets,data_file,async_file_path,async_runs_result_path)
