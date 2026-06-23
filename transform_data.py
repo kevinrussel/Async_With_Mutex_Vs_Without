@@ -42,7 +42,7 @@ def main():
     "https://ebay.com",
     "https://openai.com",
     "https://weather.com"
-] * 200
+] * 400
     with open("url/data.txt", "w") as file:
         for index in urls:
             file.write(f"{index}\n")

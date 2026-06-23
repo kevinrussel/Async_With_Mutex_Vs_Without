@@ -209,7 +209,7 @@ def main():
     create_csv_file(sequential_file_path)
     create_csv_file(threading_file_path)
     data_file = "url/data.txt"
-    num_of_packets = [10,20]
+    num_of_packets = [1,2,10,50,100,250,500,1000,2500,5000,7000,10000]
     run_test(num_of_packets,data_file,async_file_path,async_runs_result_path)
     run_test(num_of_packets,data_file,sequential_file_path,sequential_runs_result_path)
     run_test(num_of_packets,data_file,threading_file_path,threading_runs_results_path)     
