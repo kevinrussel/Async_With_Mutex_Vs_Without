@@ -88,10 +88,14 @@ def test_3_worker():
         if url is None:
             break
         try:
-        
+            response = requests.get(url, timeout=3)
+            with result_lock:
+                threading_results.append((url,response))
         except Exception as e:
             with result_lock:
-                results.append((url, f"FAILED: {type(e).__name__}"))
+                threading_results.append((url, f"FAILED: {type(e).__name__}"))
+        finally:
+            url_queue.task_done()
     
 
 
