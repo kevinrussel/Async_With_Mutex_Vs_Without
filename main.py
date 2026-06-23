@@ -100,6 +100,10 @@ def start_test_2(num_of_files, file_name, data_file):
     total_time = test_2_time_end - test_2_time_start
     return total_time
 
+
+def start_test_3(num_of_files,file_name,data_file):
+    pass
+
 def create_csv_file(filepath):
     with open(filepath,'w',newline='') as csvfile:
         fieldnames = ['Total_Packets','Total_Time']
@@ -116,12 +120,17 @@ def edit_csv_file(csv_filepath, total_num_of_packets, total_time):
 
 def run_test(num_of_packets,data_file, csv_result_file_path, runs_result_path):
         sequential = False
+        threading = False
         if "sequential" in csv_result_file_path:
             sequential = True
+        elif "threading" in csv_result_file_path:
+            threading= True
         for values in num_of_packets:
             path = runs_result_path + f"_{values}_packets"
             if(sequential):
                 test_total_time = start_test_2(values,path,data_file)
+            elif(threading):
+                test_total_time = start_test_2()
             else:
                 test_total_time = start_test_1(values,path,data_file)
             print(f" total num of packets: {values} total time {test_total_time}")
@@ -145,6 +154,6 @@ def main():
     num_of_packets = [10,50,100,250,500,1000,2500,3500,5000]
     run_test(num_of_packets,data_file,async_file_path,async_runs_result_path)
     run_test(num_of_packets,data_file,sequential_file_path,sequential_runs_result_path)
-          
+    run_test(num_of_packets,data_file,threading_file_path,threading_runs_results_path)     
 main()
 
