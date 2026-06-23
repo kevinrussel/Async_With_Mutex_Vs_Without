@@ -3,6 +3,8 @@ import aiohttp
 import time
 import requests
 import csv
+import threading
+import queue
 
 mutex = asyncio.Lock()
 
@@ -79,7 +81,8 @@ def test_2(num_of_files, file_name, data_file):
             file2.write(f"{value[0].strip()} -> {value[1]}\n")
 
 
-
+def test_3(num_of_files,file_name,data_file):
+    pass
 
 
 def get_time():
@@ -106,7 +109,7 @@ def start_test_2(num_of_files, file_name, data_file):
 
 def start_test_3(num_of_files,file_name,data_file):
     test_3_time_start = get_time()
-    test_3()
+    test_3(num_of_files,file_name,data_file)
     test_3_end_time = get_time()
     total_time = test_3_end_time - test_3_time_start
     return total_time
