@@ -6,7 +6,6 @@ import csv
 import threading
 import queue
 
-mutex = asyncio.Lock()
 
 
 async def test1_url(session,url, semaphore):
