@@ -98,7 +98,7 @@ def test_3(num_of_files,file_name,data_file):
 
     with open(data_file,'r') as file:
         lines = file.readlines()
-    result = []
+    
     counter = 0
     for line in lines:
         if(counter >= num_of_files):
