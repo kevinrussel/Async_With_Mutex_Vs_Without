@@ -79,6 +79,9 @@ def test_2(num_of_files, file_name, data_file):
             file2.write(f"{value[0].strip()} -> {value[1]}\n")
 
 
+
+
+
 def get_time():
     return time.perf_counter()
 
@@ -102,6 +105,11 @@ def start_test_2(num_of_files, file_name, data_file):
 
 
 def start_test_3(num_of_files,file_name,data_file):
+    test_3_time_start = get_time()
+    test_3()
+    test_3_end_time = get_time()
+    total_time = test_3_end_time - test_3_time_start
+    return total_time
     pass
 
 def create_csv_file(filepath):
@@ -130,7 +138,7 @@ def run_test(num_of_packets,data_file, csv_result_file_path, runs_result_path):
             if(sequential):
                 test_total_time = start_test_2(values,path,data_file)
             elif(threading):
-                test_total_time = start_test_2()
+                test_total_time = start_test_3(values,path,data_file)
             else:
                 test_total_time = start_test_1(values,path,data_file)
             print(f" total num of packets: {values} total time {test_total_time}")
