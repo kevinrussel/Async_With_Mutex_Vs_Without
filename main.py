@@ -73,7 +73,6 @@ def test_2(num_of_files, file_name, data_file):
     for line in lines:
         if(counter >= num_of_files):
             break
-        url_queue.append()
         result.append((line,test_2_get_header(line.strip())))
         counter +=1
     
@@ -81,7 +80,6 @@ def test_2(num_of_files, file_name, data_file):
         for value in result:
             file2.write(f"{value[0].strip()} -> {value[1]}\n")
 
-    url_queue.queue.clear()
 
 def test_3_worker():
     while True:
@@ -105,12 +103,16 @@ def test_3(num_of_files,file_name,data_file):
     for line in lines:
         if(counter >= num_of_files):
             break
-        result.append((line,test_2_get_header(line.strip())))
+        url_queue.put(line.strip())
         counter +=1
     
+    for _ in range(max_workers):
+        url_queue.put(None)
+    
+    for t in threads:
+        t.join()
+    queue.url_queue.clear()
 
-
-    pass
 
 
 def get_time():
