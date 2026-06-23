@@ -8,6 +8,7 @@ import queue
 
 threading_results = []
 url_queue = queue.Queue()
+result_lock = threading.Lock()
 
 async def test1_url(session,url, semaphore):
     async with semaphore:
@@ -83,9 +84,15 @@ def test_2(num_of_files, file_name, data_file):
 
 def test_3_worker():
     while True:
-
+        url = url_queue.get()
+        if url is None:
+            break
+        try:
+        
+        except Exception as e:
+            with result_lock:
+                results.append((url, f"FAILED: {type(e).__name__}"))
     
-    pass
 
 
 def test_3(num_of_files,file_name,data_file):
