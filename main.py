@@ -81,7 +81,19 @@ def test_2(num_of_files, file_name, data_file):
             file2.write(f"{value[0].strip()} -> {value[1]}\n")
 
 
+def test_3_worker():
+    pass
+
+
 def test_3(num_of_files,file_name,data_file):
+    threads = []
+    max_workers = 8
+    for _ in range(max_workers):
+        threads.append(threading.Thread(target=test_3_worker))
+    for value in range(threads):
+        value.start()
+
+
     pass
 
 
