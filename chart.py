@@ -160,32 +160,19 @@ def chart_per_packet(a_p, a_t, s_p, s_t, t_p, t_t):
 # ── main ──────────────────────────────────────────────────────────────────────
 
 def main():
-    ap = argparse.ArgumentParser(
-        description='Generate dark-mode performance charts (3 PNGs).',
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog=(
-            'example:\n'
-            '  python perf_charts.py \\\n'
-            '    --async async_results.csv \\\n'
-            '    --sequential seq_results.csv \\\n'
-            '    --threading  thread_results.csv \\\n'
-            '    --output ./charts --dpi 200'
-        ),
-    )
-    ap.add_argument('--async',      dest='a', required=True, metavar='PATH', help='async CSV')
-    ap.add_argument('--sequential', dest='s', required=True, metavar='PATH', help='sequential CSV')
-    ap.add_argument('--threading',  dest='t', required=True, metavar='PATH', help='threading CSV')
-    ap.add_argument('--output', default='.', metavar='DIR', help='output directory  (default: current dir)')
-    ap.add_argument('--dpi',    type=int, default=150,       help='PNG resolution   (default: 150)')
-    args = ap.parse_args()
+    ASYNC_PATH  = 'path/to/async_results.csv'
+    SEQ_PATH    = 'path/to/seq_results.csv'
+    THREAD_PATH = 'path/to/thread_results.csv'
+    OUTPUT_DIR  = '.'
+    DPI         = 150
 
-    out = Path(args.output)
+    out = Path(OUTPUT_DIR)
     out.mkdir(parents=True, exist_ok=True)
 
     print('Reading data...')
-    a_p, a_t = read_csv(args.a)
-    s_p, s_t = read_csv(args.s)
-    t_p, t_t = read_csv(args.t)
+    a_p, a_t = read_csv(ASYNC_PATH)
+    s_p, s_t = read_csv(SEQ_PATH)
+    t_p, t_t = read_csv(THREAD_PATH)
 
     apply_theme()
 
@@ -195,7 +182,7 @@ def main():
         ('chart3_time_per_packet.png', chart_per_packet),
     ]
 
-    save_kw = dict(dpi=args.dpi, bbox_inches='tight', facecolor=BG_FIGURE)
+    save_kw = dict(dpi=DPI, bbox_inches='tight', facecolor=BG_FIGURE)
 
     for name, fn in charts:
         print(f'  → {name}')
