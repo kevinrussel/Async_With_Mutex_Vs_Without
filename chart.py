@@ -177,9 +177,9 @@ def main():
     apply_theme()
 
     charts = [
-        ('chart1_time_vs_packets.png', chart_time),
-        ('chart2_speedup_ratio.png',   chart_speedup),
-        ('chart3_time_per_packet.png', chart_per_packet),
+        ('charts/chart1_time_vs_packets.png', chart_time),
+        ('charts/chart2_speedup_ratio.png',   chart_speedup),
+        ('charts/chart3_time_per_packet.png', chart_per_packet),
     ]
 
     save_kw = dict(dpi=DPI, bbox_inches='tight', facecolor=BG_FIGURE)
@@ -190,7 +190,7 @@ def main():
         fig.savefig(out / name, **save_kw)
         plt.close(fig)
 
-    print(f'\nDone — charts saved to: {out.resolve()}')
+    print(f'\nDone — charts saved to: {out.resolve()}/charts')
 
 
 if __name__ == '__main__':
