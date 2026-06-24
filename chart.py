@@ -160,9 +160,9 @@ def chart_per_packet(a_p, a_t, s_p, s_t, t_p, t_t):
 # ── main ──────────────────────────────────────────────────────────────────────
 
 def main():
-    ASYNC_PATH  = 'path/to/async_results.csv'
-    SEQ_PATH    = 'path/to/seq_results.csv'
-    THREAD_PATH = 'path/to/thread_results.csv'
+    ASYNC_PATH  = 'async/results/async_results.csv'
+    SEQ_PATH    = 'sequential/results/sequential_results.csv'
+    THREAD_PATH = 'threading/results/threading_results.csv'
     OUTPUT_DIR  = '.'
     DPI         = 150
 
