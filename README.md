@@ -163,4 +163,4 @@ At 10,000 packets, async is **46.6× faster than sequential** and **5.8× faster
 
 ## License
 
-MIT
+MIT License
